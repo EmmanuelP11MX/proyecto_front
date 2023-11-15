@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Nombre</td>
+            <td>Descripción</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="listaMarcas.length==0">
+            <td colspan="4">No hay elementos</td>
+        </tr>
+        <tr *ngFor="let marca of listaMarcas; let i =index">
+            <td>{{marca.id}}</td>
+            <td>{{marca.nombre}}</td>
+            <td>{{marca.descripcion}}</td>
+            <td>
+                <button class="btn btn-info m-2">Editar</button>
+                <button class="btn btn-info m-2">Ver</button>
+                <button (click)="deleteMarca(marca.id)" class="btn btn-danger m-2">Eliminar</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="alert alert-primary" role="alert" *ngIf="mensaje!=null">
+        {{mensaje}}
+    </div>
+
+    <form (ngSubmit)="submit()" #forma="ngForm">
+        <div class="col-md-6">
+            <label for="nombre" class="form-label">Nombre de la Marca</label>
+            <input type="text" class="form-control" id="nombre" aria-describedby="Marca"
+                [(ngModel)]="marca.nombre" #nombre="ngModel" name="nombre" minlength="3"
+                maxlength="20" [ngClass]="{'is-valid':!nombre.invalid,'is-invalid':nombre.invalid}" required>
+            <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf="nombre.errors?.['minlength']">
+                    EL numero minimo es de 3
+                    {{nombre.errors|json}}
+                </div>
+                <div *ngIf="nombre.errors?.['required']">
+                    Introduzca el nombre de la marca
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="nombre" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="descripcion" aria-describedby="Descripcion"
+                [(ngModel)]="marca.descripcion" #descripcion="ngModel" name="descripcion" minlength="3"
+                maxlength="150" [ngClass]="{'is-valid':!descripcion.invalid,'is-invalid':descripcion.invalid}" required>
+            <div class="invalid-feedback" *ngIf="descripcion.invalid && (nombre.dirty || descripcion.touched)">
+                <div *ngIf="descripcion.errors?.['minlength']">
+                    EL numero minimo es de 3
+                    {{nombre.errors|json}}
+                </div>
+                <div *ngIf="descripcion.errors?.['required']">
+                    Introduzaca un nombre
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-4">
+                <button type="submit" [disabled]="!forma.valid" class="btn btn-primary">
+                    Enviar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
