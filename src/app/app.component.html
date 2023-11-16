@@ -9,9 +9,12 @@
           <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav"  *ngFor="let menu of listaMenu">
                   <li class="nav-item">
-                      <a class="nav-link" [routerLink]="menu.href" routerLinkActive="active">{{menu.name}}</a>
+                      <a class="nav-link" [routerLink]="menu.href" routerLinkActive="active">{{menu.name}} </a>
                   </li>
               </ul>
+              <!-- <form class="d-flex" role="search"> -->
+                <!-- <button class="btn btn-outline-success" type="submit" (click)="logout()">Cerrar sesion</button> -->
+              <!-- </form> -->
           </div>
       </div>
   </nav>

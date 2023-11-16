@@ -38,6 +38,7 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem(this.authSecretKey);
     this.isLogin = false;
+    //localStorage.clear();
   }
   setTokeSecretKey(tokeSecret: string) {
     localStorage.setItem(this.authSecretKey, tokeSecret);
