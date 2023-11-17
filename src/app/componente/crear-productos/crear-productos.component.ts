@@ -11,7 +11,7 @@ export class CrearProductosComponent {
   producto!: Producto;
   mensaje!: string;
   constructor(private productosService: ProductoService) {
-    this.producto = new Producto(-1, '', '',10,10, 10, 1,);
+    this.producto = new Producto(-1, '',10,10, 10, 1,);
   }
   submit() {
     this.productosService.create(this.producto).subscribe({

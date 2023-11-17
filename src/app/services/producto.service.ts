@@ -8,7 +8,7 @@ import { Producto } from 'src/model/Producto';
 })
 export class ProductoService {
   private hosting: string = 'http://127.0.0.1:8000/';
-  private action: string = 'api/productos';
+  private action: string = 'api/producto';
   private options:any;
   private authSecretKey:string="Token_Bearer";
   constructor(private http: HttpClient) {

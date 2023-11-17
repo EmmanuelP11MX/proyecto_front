@@ -34,6 +34,7 @@ export namespace env {
         { path: 'crear-marcas', component: CrearMarcasComponent },
         { path: 'editar-marcas/:id', component: CrearMarcasComponent },
         { path: 'ver-marcas/:id', component: MarcasComponent },
+        
         { path: 'lista-producto', component: ListaProductosComponent },
         { path: 'crear-producto', component: CrearProductosComponent },
         { path: 'editar-producto/:id', component: CrearProductosComponent },
