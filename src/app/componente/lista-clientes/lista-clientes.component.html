@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Nombre</td>
+        <td>Apellidos</td>
+        <td>Acciones</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="listaClientes.length === 0">
+        <td colspan="4">No hay elementos</td>
+      </tr>
+      <tr *ngFor="let cliente of listaClientes; let i = index">
+        <td>{{ cliente.id }}</td>
+        <td>{{ cliente.nombre }}</td>
+        <td>{{ cliente.apellidos }}</td>
+        <td>
+          <button class="btn btn-info m-2">Editar</button>
+          <button class="btn btn-info m-2">Ver</button>
+          <button (click)="deleteCliente(cliente.id)" class="btn btn-danger m-2">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

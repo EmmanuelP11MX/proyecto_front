@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="alert alert-primary" role="alert" *ngIf="mensaje != null">
+      {{ mensaje }}
+    </div>
+  
+    <form (ngSubmit)="submit()" #forma="ngForm">
+      <div class="col-md-6">
+        <label for="nombre" class="form-label">Nombre del Cliente</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombre"
+          aria-describedby="Cliente"
+          [(ngModel)]="cliente.nombre"
+          #nombre="ngModel"
+          name="nombre"
+          minlength="3"
+          maxlength="20"
+          [ngClass]="{ 'is-valid': !nombre.invalid, 'is-invalid': nombre.invalid }"
+          required
+        />
+        <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+          <div *ngIf="nombre.errors?.['minlength']">
+            La longitud mínima es de 3 caracteres.
+          </div>
+          <div *ngIf="nombre.errors?.['required']">
+            Por favor, introduzca el nombre del cliente.
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-6">
+        <label for="apellidos" class="form-label">Apellidos del Cliente</label>
+        <input
+          type="text"
+          class="form-control"
+          id="apellidos"
+          aria-describedby="Apellidos"
+          [(ngModel)]="cliente.apellidos"
+          #apellidos="ngModel"
+          name="apellidos"
+          minlength="3"
+          maxlength="150"
+          [ngClass]="{ 'is-valid': !apellidos.invalid, 'is-invalid': apellidos.invalid }"
+          required
+        />
+        <div class="invalid-feedback" *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)">
+          <div *ngIf="apellidos.errors?.['minlength']">
+            La longitud mínima es de 3 caracteres.
+          </div>
+          <div *ngIf="apellidos.errors?.['required']">
+            Por favor, introduzca los apellidos del cliente.
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-12 mt-4">
+          <button type="submit" [disabled]="!forma.valid" class="btn btn-primary">
+            Enviar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

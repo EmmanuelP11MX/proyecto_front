@@ -15,6 +15,9 @@ import { CrearProductosComponent } from './componente/crear-productos/crear-prod
 import { ListaCategoriaComponent } from './componente/lista-categoria/lista-categoria.component';
 import { CrearCategoriasComponent } from './componente/crear-categorias/crear-categorias.component';
 import { CategoriasComponent } from './componente/categorias/categorias.component';
+import { ClientesComponent } from './componente/clientes/clientes.component';
+import { CrearClientesComponent } from './componente/crear-clientes/crear-clientes.component';
+import { ListaClientesComponent } from './componente/lista-clientes/lista-clientes.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { CategoriasComponent } from './componente/categorias/categorias.componen
     ListaCategoriaComponent,
     CrearCategoriasComponent,
     CategoriasComponent,
+    ClientesComponent,
+    CrearClientesComponent,
+    ListaClientesComponent,
   ],
   imports: [
     BrowserModule,
