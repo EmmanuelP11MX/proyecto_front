@@ -1,0 +1,34 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Nombre</td>
+            <td>Descripción</td>
+            <td>Precio</td>
+            <td>Cantidad Disponible</td>
+            <td>Categoria</td>
+            <td>Marca</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="listaProductos.length==0">
+            <td colspan="8">No hay elementos</td>
+        </tr>
+        <tr *ngFor="let producto of listaProductos; let i =index">
+            <td>{{producto.id}}</td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>{{producto.precio}}</td>
+            <td>{{producto.cantidad_disponible}}</td>
+            <td>{{producto.categoria_id}}</td>
+            <td>{{producto.marca_id}}</td>
+            <td>
+                <button class="btn btn-info m-2">Editar</button>
+                <button class="btn btn-info m-2">Ver</button>
+                <button (click)="deleteProducto(producto.id)" class="btn btn-danger m-2">Eliminar</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
