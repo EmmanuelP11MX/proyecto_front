@@ -1,0 +1,95 @@
+<div class="container">
+    <div *ngIf="!cargando">
+        <h1> {{compra_producto.id<0?'Crear nueva compra-producto':'Editar compra-producto'+compra_producto.id}}</h1>
+    
+    <div class="alert alert-primary" role="alert" *ngIf="mensaje!=null">
+        {{mensaje}}
+    </div>
+
+    <form (ngSubmit)="submit()" #forma="ngForm">
+        <div class="col-md-6">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="text" class="form-control" id="precio" aria-describedby="Compra_producto"
+                [(ngModel)]="compra_producto.precio" #precio="ngModel" name="precio" minlength="1"
+                maxlength="6" [ngClass]="{'is-valid':!precio.invalid,'is-invalid':precio.invalid}" required>
+            <div class="invalid-feedback" *ngIf="precio.invalid && (precio.dirty || precio.touched)">
+                <div *ngIf="precio.errors?.['minlength']">
+                    EL numero minimo es de 0
+                    {{precio.errors|json}}
+                </div>
+                <div *ngIf="precio.errors?.['required']">
+                    Introduzca precio
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="cantidad" class="form-label">Cantidad</label>
+            <input type="text" class="form-control" id="cantidad" aria-describedby="cantidad"
+                [(ngModel)]="compra_producto.cantidad" #cantidad="ngModel" name="cantidad" minlength="1"
+                maxlength="6" [ngClass]="{'is-valid':!cantidad.invalid,'is-invalid':cantidad.invalid}" required>
+            <div class="invalid-feedback" *ngIf="cantidad.invalid && (cantidad.dirty || cantidad.touched)">
+                <div *ngIf="cantidad.errors?.['minlength']">
+                    EL numero minimo es de 1
+                    {{cantidad.errors|json}}
+                </div>
+                <div *ngIf="cantidad.errors?.['required']">
+                    Introduzca cantidad
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="subtotal" class="form-label">Subtotal</label>
+            <input type="text" class="form-control" id="subtotal" aria-describedby="subtotal"
+                [(ngModel)]="compra_producto.subtotal" #subtotal="ngModel" name="subtotal" minlength="1"
+                maxlength="6" [ngClass]="{'is-valid':!subtotal.invalid,'is-invalid':subtotal.invalid}" required>
+            <div class="invalid-feedback" *ngIf="subtotal.invalid && (subtotal.dirty || subtotal.touched)">
+                <div *ngIf="subtotal.errors?.['minlength']">
+                    EL numero minimo es de 1
+                    {{subtotal.errors|json}}
+                </div>
+                <div *ngIf="subtotal.errors?.['required']">
+                    Introduzca subtotal
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="compra_id" class="form-label">Compra ID</label>
+            <input type="text" class="form-control" id="compra_id" aria-describedby="compra_id"
+                [(ngModel)]="compra_producto.compra_id" #compra_id="ngModel" name="compra_id" minlength="1"
+                maxlength="6" [ngClass]="{'is-valid':!cantidad.invalid,'is-invalid':compra_id.invalid}" required>
+            <div class="invalid-feedback" *ngIf="compra_id.invalid && (compra_id.dirty || compra_id.touched)">
+                <div *ngIf="compra_id.errors?.['minlength']">
+                    EL numero minimo es de 1
+                    {{compra_id.errors|json}}
+                </div>
+                <div *ngIf="compra_id.errors?.['required']">
+                    Introduzca compra_id
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="producto_id" class="form-label">Producto ID</label>
+            <input type="text" class="form-control" id="producto_id" aria-describedby="producto_id"
+                [(ngModel)]="compra_producto.producto_id" #producto_id="ngModel" name="producto_id" minlength="1"
+                maxlength="6" [ngClass]="{'is-valid':!producto_id.invalid,'is-invalid':producto_id.invalid}" required>
+            <div class="invalid-feedback" *ngIf="producto_id.invalid && (producto_id.dirty || producto_id.touched)">
+                <div *ngIf="producto_id.errors?.['minlength']">
+                    EL numero minimo es de 1
+                    {{producto_id.errors|json}}
+                </div>
+                <div *ngIf="producto_id.errors?.['required']">
+                    Introduzca producto_id
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-4">
+                <button type="submit" [disabled]="!forma.valid" class="btn btn-primary">                   
+                    {{compra_producto.id<0?'Agregar':'Actualizar'}}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>

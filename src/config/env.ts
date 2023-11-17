@@ -13,6 +13,10 @@ import { CrearCategoriasComponent } from "src/app/componente/crear-categorias/cr
 import { ListaClientesComponent } from "src/app/componente/lista-clientes/lista-clientes.component";
 import { CrearClientesComponent } from "src/app/componente/crear-clientes/crear-clientes.component";
 import { ClientesComponent } from "src/app/componente/clientes/clientes.component";
+import { CrearComprasComponent } from "src/app/componente/crear-compras/crear-compras.component";
+import { ListaComprasComponent } from "src/app/componente/lista-compras/lista-compras.component";
+import { CrearCompraProductoComponent } from "src/app/componente/crear-compra-producto/crear-compra-producto.component";
+import { ListaCompraProductoComponent } from "src/app/componente/lista-compra-producto/lista-compra-producto.component";
 
 export class ItemMenu {
     public id!: number;
@@ -35,7 +39,11 @@ export namespace env {
         new ItemMenu(7, 'Crear Categoria', 'crear-categoria'),
         new ItemMenu(8, 'Lista Clientes', 'lista-clientes'),
         new ItemMenu(9, 'Crear Clientes', 'crear-clientes'),
-        new ItemMenu(10, 'Cerrar sesion', 'login'),
+        new ItemMenu(10, 'Crear Compra','crear-compra'),
+        new ItemMenu(11, 'Listar Compras', 'listar-compras'),
+        new ItemMenu(12, 'Crear Compra-Producto', 'crear-compra-producto'),
+        new ItemMenu(13, 'Listar Compra-Producto', 'listar-compra-producto'),
+        new ItemMenu(14, 'Cerrar sesion', 'login'),
     ];
 
     export const routers: Routes = [
@@ -57,6 +65,12 @@ export namespace env {
         { path: 'crear-clientes', component: CrearClientesComponent },
         { path: 'editar-clientes/:id', component: CrearClientesComponent },
         { path: 'ver-clientes/:id', component: ClientesComponent },
+        { path: 'crear-compra', component: CrearComprasComponent},
+        { path: 'listar-compras', component: ListaComprasComponent},
+        { path: 'editar-compras/id', component: CrearComprasComponent},
+        { path: 'crear-compra-producto', component: CrearCompraProductoComponent},
+        { path: 'listar-compra-producto', component: ListaCompraProductoComponent},
+        { path: 'editar-compra-producto', component: CrearCompraProductoComponent},
         
 
         { path: 'login', component: LoginComponent }

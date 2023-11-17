@@ -18,6 +18,8 @@ import { CategoriasComponent } from './componente/categorias/categorias.componen
 import { ClientesComponent } from './componente/clientes/clientes.component';
 import { CrearClientesComponent } from './componente/crear-clientes/crear-clientes.component';
 import { ListaClientesComponent } from './componente/lista-clientes/lista-clientes.component';
+import { CrearCompraProductoComponent } from './crear-compra-producto/crear-compra-producto.component';
+import { ListaCompraProductoComponent } from './componente/lista-compra-producto/lista-compra-producto.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { ListaClientesComponent } from './componente/lista-clientes/lista-client
     ClientesComponent,
     CrearClientesComponent,
     ListaClientesComponent,
+    CrearCompraProductoComponent,
+    ListaCompraProductoComponent,
   ],
   imports: [
     BrowserModule,
