@@ -1,0 +1,50 @@
+<div class="container">
+    <div *ngIf="!cargando">
+        <h1> {{categoria.id<0?'Crear nueva categorias':'Editar categorias'+categoria.id}}</h1>
+    
+    <div class="alert alert-primary" role="alert" *ngIf="mensaje!=null">
+        {{mensaje}}
+    </div>
+
+    <form (ngSubmit)="submit()" #forma="ngForm">
+        <div class="col-md-6">
+            <label for="nombre" class="form-label">Nombre de la  categoria</label>
+            <input type="text" class="form-control" id="titulo_corto" aria-describedby="Categorias"
+                [(ngModel)]="categoria.nombre" #nombre="ngModel" name="nombre" minlength="3"
+                maxlength="6" [ngClass]="{'is-valid':!nombre.invalid,'is-invalid':nombre.invalid}" required>
+            <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf="nombre.errors?.['minlength']">
+                    EL numero minimo es de 3
+                    {{nombre.errors|json}}
+                </div>
+                <div *ngIf="nombre.errors?.['required']">
+                    Introduzaca un nombre
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="nombre" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="descripcion" aria-describedby="Descripcion"
+                [(ngModel)]="categoria.descripcion" #descripcion="ngModel" name="descripcion" minlength="3"
+                maxlength="6" [ngClass]="{'is-valid':!descripcion.invalid,'is-invalid':descripcion.invalid}" required>
+            <div class="invalid-feedback" *ngIf="descripcion.invalid && (nombre.dirty || descripcion.touched)">
+                <div *ngIf="descripcion.errors?.['minlength']">
+                    EL numero minimo es de 3
+                    {{nombre.errors|json}}
+                </div>
+                <div *ngIf="descripcion.errors?.['required']">
+                    Introduzaca una descripcion
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-4">
+                <button type="submit" [disabled]="!forma.valid" class="btn btn-primary">                   
+                    {{categoria.id<0?'Agregar':'Actualizar'}}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
