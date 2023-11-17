@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs';
 import { Marca } from 'src/model/Marca';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class MarcaService {
   private hosting: string = 'http://127.0.0.1:8000/';
   private action: string = 'api/marcas';
