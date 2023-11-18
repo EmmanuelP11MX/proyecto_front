@@ -17,21 +17,21 @@ export class ListaClientesComponent {
     private clientesService: ClientesService,
     private router: Router
   ) {
-    clientesService.getList().subscribe({
+    this.clientesService.getList().subscribe({
       next: (resp) => {
         console.log(resp);
-        this.listaClientes = Cliente.mapParseListJson(resp.message);
+        this.listaClientes = Cliente.mapParseListJson(resp);
       },
       error: (err) => {
         console.log(err.error.msg);
       },
-    });
+     });
   }
 
   editCliente(id: number) {
     this.router.navigateByUrl('editar-cliente/' + id);
   }
-
+   
   verCliente(id: number) {
     this.router.navigateByUrl('ver-cliente/' + id);
   }
@@ -44,20 +44,15 @@ export class ListaClientesComponent {
           this.bloqueoBtnEliminar = false;
           console.log(resp);
           this.mensaje = 'Registro Eliminado';
-          this.clientesService.getList().subscribe({
-            next: (resp) => {
-              console.log(resp);
-              this.listaClientes = Cliente.mapParseListJson(resp.message);
-            },
-            error: (err) => {
-              console.log(err.error.msg);
-            },
-          });
+          // Elimina el cliente de la lista
+          const deletedClienteIndex = this.listaClientes.findIndex(cliente => cliente.id === id);
+          if (deletedClienteIndex >= 0) {
+            this.listaClientes.splice(deletedClienteIndex, 1);
+          }
         },
         error: (err) => {
           console.log(err.error.msg);
         },
       });
     }
-  }
-}
+  }}
