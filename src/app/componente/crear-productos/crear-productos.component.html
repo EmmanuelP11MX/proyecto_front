@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="alert alert-primary" role="alert" *ngIf="mensaje!=null">
+        {{mensaje}}
+    </div>
+
+    <form (ngSubmit)="submit()" #forma="ngForm">
+        <div class="col-md-6">
+            <label for="nombre" class="form-label">Nombre del Producto</label>
+            <input type="text" class="form-control" id="nombre" aria-describedby="Producto"
+                [(ngModel)]="producto.nombre" #nombre="ngModel" name="nombre" minlength="3"
+                maxlength="20" [ngClass]="{'is-valid':!nombre.invalid,'is-invalid':nombre.invalid}" required>
+            <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf="nombre.errors?.['minlength']">
+                    EL numero minimo es de 3
+                    {{nombre.errors|json}}
+                </div>
+                <div *ngIf="nombre.errors?.['required']">
+                    Nombre de producto
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="nombre" class="form-label">Precio</label>
+            <input type="text" class="form-control" id="precio" aria-describedby="Precio"
+                [(ngModel)]="producto.precio" #precio="ngModel" name="precio" minlength="3"
+                maxlength="150" [ngClass]="{'is-valid':!precio.invalid,'is-invalid':precio.invalid}" required>
+            <div class="invalid-feedback" *ngIf="precio.invalid && (nombre.dirty || precio.touched)">
+                <div *ngIf="precio.errors?.['minlength']">
+                    EL numero minimo es de 3
+                    {{nombre.errors|json}}
+                </div>
+                <div *ngIf="precio.errors?.['required']">
+                    Introduzca el precio
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="nombre" class="form-label">Cantidad disponible</label>
+            <input type="text" class="form-control" id="cantidad_disponible" aria-describedby="Cantidad Disponible"
+                [(ngModel)]="producto.cantidad_disponible" #cantidad_disponible="ngModel" name="cantidad_disponible" minlength="3"
+                maxlength="150" [ngClass]="{'is-valid':!cantidad_disponible.invalid,'is-invalid':cantidad_disponible.invalid}" required>
+            <div class="invalid-feedback" *ngIf="cantidad_disponible.invalid && (nombre.dirty || cantidad_disponible.touched)">
+                <div *ngIf="cantidad_disponible.errors?.['minlength']">
+                    EL numero minimo es de 3
+                    {{nombre.errors|json}}
+                </div>
+                <div *ngIf="cantidad_disponible.errors?.['required']">
+                    Introduzca un nombre
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="nombre" class="form-label">CategoriaID</label>
+            <input type="text" class="form-control" id="categoria_id" aria-describedby="Categoria ID"
+                [(ngModel)]="producto.categoria_id" #categoria_id="ngModel" name="categoria_id" minlength="3"
+                maxlength="150" [ngClass]="{'is-valid':!categoria_id.invalid,'is-invalid':categoria_id.invalid}" required>
+            <div class="invalid-feedback" *ngIf="categoria_id.invalid && (nombre.dirty || categoria_id.touched)">
+                <div *ngIf="categoria_id.errors?.['minlength']">
+                    EL numero minimo es de 3
+                    {{nombre.errors|json}}
+                </div>
+                <div *ngIf="categoria_id.errors?.['required']">
+                    Introduzca un nombre
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="nombre" class="form-label">MarcaID</label>
+            <input type="text" class="form-control" id="marca_id" aria-describedby="Marca ID"
+                [(ngModel)]="producto.marca_id" #marca_id="ngModel" name="marca_id" minlength="3"
+                maxlength="150" [ngClass]="{'is-valid':!marca_id.invalid,'is-invalid':marca_id.invalid}" required>
+            <div class="invalid-feedback" *ngIf="marca_id.invalid && (nombre.dirty || marca_id.touched)">
+                <div *ngIf="marca_id.errors?.['minlength']">
+                    EL numero minimo es de 3
+                    {{nombre.errors|json}}
+                </div>
+                <div *ngIf="marca_id.errors?.['required']">
+                    Introduzca un nombre
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 mt-4">
+                <button type="submit" [disabled]="!forma.valid" class="btn btn-primary">
+                    Enviar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+

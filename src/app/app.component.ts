@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ItemMenu, env } from 'src/config/env';
+import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,9 @@ export class AppComponent {
   listaMenu: Array<ItemMenu> = env.menu;
   title = 'proyecto_front';
 
-  constructor() {
-    
+  constructor(private authService: AuthService, private router: Router){}
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['login']);
   }
 }

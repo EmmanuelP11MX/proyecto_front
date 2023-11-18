@@ -1,0 +1,32 @@
+<div class="alert alert-primary" role="alert" *ngIf="mensaje!=null">
+    {{mensaje}}
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Subtotal</td>
+            <td>Total</td>
+            <td>Creacion</td>
+            <td>Actualizacion</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="listaCompras.length==0">
+            <td colspan="4">No hay elementos</td>
+        </tr>
+        <tr *ngFor="let solicitud of listaCompras; let i =index">
+            <td>{{solicitud.id}}</td>
+            <td>{{solicitud.subtotal}}</td>
+            <td>{{solicitud.total}}</td>
+            <td>{{solicitud.created_at}}</td>
+            <td>{{solicitud.updated_at}}</td>
+            <td>
+                <button class="btn btn-info m-2" (click)="editSolicitud(solicitud.id)">Editar</button>
+                <button class="btn btn-info m-2" (click)="mostrarSolicitud(solicitud.id)">Ver</button>
+                <button (click)="deleteCompra(solicitud.id)" class="btn btn-danger m-2">Eliminar</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

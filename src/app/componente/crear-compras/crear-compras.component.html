@@ -1,0 +1,50 @@
+<div class="container">
+    <div *ngIf="!cargando">
+        <h1> {{compra.id<0?'Crear nueva compra':'Editar compras'+compra.id}}</h1>
+    
+    <div class="alert alert-primary" role="alert" *ngIf="mensaje!=null">
+        {{mensaje}}
+    </div>
+
+    <form (ngSubmit)="submit()" #forma="ngForm">
+        <div class="col-md-6">
+            <label for="subtotal" class="form-label">Subtotal</label>
+            <input type="text" class="form-control" id="subtotal" aria-describedby="Compras"
+                [(ngModel)]="compra.subtotal" #subtotal="ngModel" name="subtotal" minlength="3"
+                maxlength="6" [ngClass]="{'is-valid':!subtotal.invalid,'is-invalid':subtotal.invalid}" required>
+            <div class="invalid-feedback" *ngIf="subtotal.invalid && (subtotal.dirty || subtotal.touched)">
+                <div *ngIf="subtotal.errors?.['minlength']">
+                    EL numero minimo es de 3
+                    {{subtotal.errors|json}}
+                </div>
+                <div *ngIf="subtotal.errors?.['required']">
+                    Introduzca subtotal
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="total" class="form-label">Total</label>
+            <input type="text" class="form-control" id="total" aria-describedby="Total"
+                [(ngModel)]="compra.total" #total="ngModel" name="total" minlength="3"
+                maxlength="6" [ngClass]="{'is-valid':!total.invalid,'is-invalid':total.invalid}" required>
+            <div class="invalid-feedback" *ngIf="total.invalid && (subtotal.dirty || total.touched)">
+                <div *ngIf="total.errors?.['minlength']">
+                    EL numero minimo es de 3
+                    {{total.errors|json}}
+                </div>
+                <div *ngIf="total.errors?.['required']">
+                    Introduzca total
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-4">
+                <button type="submit" [disabled]="!forma.valid" class="btn btn-primary">                   
+                    {{compra.id<0?'Agregar':'Actualizar'}}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
