@@ -25,7 +25,6 @@ export class CrearMarcasComponent {
           next: (resp) => {
             this.marca = resp.data as Marca;
             this.cargando = false;
-            //this.solicitud = new Solicitud(resp.data.id, resp.data.titulo_corto, resp.data.descripcion, 0);
           },
           error: (err) => {
             console.log(err.error.msg);
@@ -37,7 +36,6 @@ export class CrearMarcasComponent {
     }
   }
   submit() {
-    //this.marca.estado_solicitud_id = 1;
     this.marcaService.create(this.marca).subscribe({
       next: (resp) => {
         console.log(resp);
