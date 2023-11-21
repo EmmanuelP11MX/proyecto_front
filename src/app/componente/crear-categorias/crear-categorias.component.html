@@ -10,11 +10,11 @@
         <div class="col-md-6">
             <label for="nombre" class="form-label">Nombre de la  categoria</label>
             <input type="text" class="form-control" id="titulo_corto" aria-describedby="Categorias"
-                [(ngModel)]="categoria.nombre" #nombre="ngModel" name="nombre" minlength="3"
-                maxlength="300" [ngClass]="{'is-valid':!nombre.invalid,'is-invalid':nombre.invalid}" required>
+                [(ngModel)]="categoria.nombre" #nombre="ngModel" name="nombre" minlength="10"
+                maxlength="100" [ngClass]="{'is-valid':!nombre.invalid,'is-invalid':nombre.invalid}" required>
             <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
                 <div *ngIf="nombre.errors?.['minlength']">
-                    EL numero minimo es de 3
+                    EL numero minimo es de 10
                     {{nombre.errors|json}}
                 </div>
                 <div *ngIf="nombre.errors?.['required']">
@@ -26,11 +26,11 @@
         <div class="col-md-6">
             <label for="nombre" class="form-label">Descripción</label>
             <input type="text" class="form-control" id="descripcion" aria-describedby="Descripcion"
-                [(ngModel)]="categoria.descripcion" #descripcion="ngModel" name="descripcion" minlength="3"
+                [(ngModel)]="categoria.descripcion" #descripcion="ngModel" name="descripcion" minlength="10"
                 maxlength="300" [ngClass]="{'is-valid':!descripcion.invalid,'is-invalid':descripcion.invalid}" required>
             <div class="invalid-feedback" *ngIf="descripcion.invalid && (nombre.dirty || descripcion.touched)">
                 <div *ngIf="descripcion.errors?.['minlength']">
-                    EL numero minimo es de 3
+                    EL numero minimo es de 10
                     {{nombre.errors|json}}
                 </div>
                 <div *ngIf="descripcion.errors?.['required']">
