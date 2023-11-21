@@ -20,7 +20,7 @@ export class ListaProductosComponent {
     productoService.getList().subscribe({
       next: (resp) => {
         console.log(resp);
-        this.listaProductos = Producto.mapParseListJson(resp.message);
+        this.listaProductos = Producto.mapParseListJson(resp.data);
       },
       error: (err) => {
         console.log(err.error.msg);
@@ -44,7 +44,7 @@ export class ListaProductosComponent {
           this.productoService.getList().subscribe({
             next: (resp) => {
               console.log(resp);
-              this.listaProductos = Producto.mapParseListJson(resp.message);
+              this.listaProductos = Producto.mapParseListJson(resp.data);
             },
             error: (err) => {
               console.log(err.error.msg);

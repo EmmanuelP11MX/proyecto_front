@@ -20,7 +20,7 @@ export class ListaCategoriaComponent {
     categoriaService.getList().subscribe({
       next: (resp) => {
         console.log(resp);
-        this.listaCategorias = Categorias.mapParseListJson(resp.message);
+        this.listaCategorias = Categorias.mapParseListJson(resp.data);
       },
       error: (err) => {
         console.log(err.error.msg);
@@ -44,7 +44,7 @@ export class ListaCategoriaComponent {
           this.categoriaService.getList().subscribe({
             next: (resp) => {
               console.log(resp);
-              this.listaCategorias = Categorias.mapParseListJson(resp.message);
+              this.listaCategorias = Categorias.mapParseListJson(resp.data);
             },
             error: (err) => {
               console.log(err.error.msg);
