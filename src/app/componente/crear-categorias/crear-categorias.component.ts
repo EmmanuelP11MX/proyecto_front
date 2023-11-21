@@ -12,7 +12,7 @@ export class CrearCategoriasComponent {
   mensaje!: string;
   cargando: any;
   constructor(private categoriaService: CategoriasService) {
-    this.categoria = new Categorias (-1, '', '', new Date(), new Date());
+    this.categoria = new Categorias (-1, '', '');
   }
   submit() {
     //this.categoria.estado_solicitud_id = 1;

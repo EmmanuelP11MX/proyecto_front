@@ -7,8 +7,6 @@
             <td>ID</td>
             <td>Nombre</td>
             <td>Descripción</td>
-            <td>Creacion</td>
-            <td>Actualizacion</td>
         </tr>
     </thead>
     <tbody>
@@ -19,8 +17,6 @@
             <td>{{solicitud.id}}</td>
             <td>{{solicitud.nombre}}</td>
             <td>{{solicitud.descripcion}}</td>
-            <td>{{solicitud.created_at}}</td>
-            <td>{{solicitud.updated_at}}</td>
             <td>
                 <button class="btn btn-info m-2" (click)="editSolicitud(solicitud.id)">Editar</button>
                 <button class="btn btn-info m-2" (click)="mostrarSolicitud(solicitud.id)">Ver</button>
