@@ -3,6 +3,7 @@ import { ItemMenu, env } from 'src/config/env';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,10 +12,15 @@ import { Router } from '@angular/router';
 export class AppComponent {
   listaMenu: Array<ItemMenu> = env.menu;
   title = 'proyecto_front';
+  isLoggedIn = false;
 
-  constructor(private authService: AuthService, private router: Router){}
-  logout(){
+  constructor(private authService: AuthService, private router: Router){
+    this.isLoggedIn = this.authService.isUserLogin();
+  }
+
+  onLogoutClick() {
     this.authService.logout();
-    this.router.navigate(['login']);
+    this.isLoggedIn = false;
+    this.router.navigate(['/login']);
   }
 }

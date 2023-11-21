@@ -20,6 +20,7 @@ import { CrearClientesComponent } from './componente/crear-clientes/crear-client
 import { ListaClientesComponent } from './componente/lista-clientes/lista-clientes.component';
 import { CrearCompraProductoComponent } from './componente/crear-compra-producto/crear-compra-producto.component';
 import { ListaCompraProductoComponent } from './componente/lista-compra-producto/lista-compra-producto.component';
+import { CambioPasswordComponent } from './componente/cambio-password/cambio-password.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ListaCompraProductoComponent } from './componente/lista-compra-producto
     ListaClientesComponent,
     CrearCompraProductoComponent,
     ListaCompraProductoComponent,
+    CambioPasswordComponent
   ],
   imports: [
     BrowserModule,

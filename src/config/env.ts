@@ -1,4 +1,5 @@
 import { Routes } from "@angular/router";
+import { authGuardGuard } from 'src/app/guards/auth-guard.guard';
 import { HomeComponent } from "src/app/componente/home/home.component";
 import { CrearMarcasComponent } from "src/app/componente/crear-marcas/crear-marcas.component";
 import { ListaMarcasComponent } from "src/app/componente/lista-marcas/lista-marcas.component";
@@ -17,6 +18,7 @@ import { CrearComprasComponent } from "src/app/componente/crear-compras/crear-co
 import { ListaComprasComponent } from "src/app/componente/lista-compras/lista-compras.component";
 import { CrearCompraProductoComponent } from "src/app/componente/crear-compra-producto/crear-compra-producto.component";
 import { ListaCompraProductoComponent } from "src/app/componente/lista-compra-producto/lista-compra-producto.component";
+import { CambioPasswordComponent } from "src/app/componente/cambio-password/cambio-password.component";
 
 export class ItemMenu {
     public id!: number;
@@ -43,39 +45,41 @@ export namespace env {
         new ItemMenu(11, 'Listar Compras', 'listar-compras'),
         new ItemMenu(12, 'Crear Compra-Producto', 'crear-compra-producto'),
         new ItemMenu(13, 'Listar Compra-Producto', 'listar-compra-producto'),
-        new ItemMenu(14, 'Cerrar sesion', 'login'),
+        new ItemMenu(14, 'Cambiar Password', 'cambio-password'),
+        
     ];
 
     export const routers: Routes = [
-        { path: '', component: HomeComponent },
-        { path: 'lista-marcas', component: ListaMarcasComponent },
-        { path: 'crear-marcas', component: CrearMarcasComponent },
-        { path: 'editar-marcas/:id', component: CrearMarcasComponent },
-        { path: 'ver-marcas/:id', component: MarcasComponent },
+        { path: '', component: HomeComponent, canActivate: [authGuardGuard] },
+        { path: 'lista-marcas', component: ListaMarcasComponent, canActivate: [authGuardGuard] },
+        { path: 'crear-marcas', component: CrearMarcasComponent, canActivate: [authGuardGuard] },
+        { path: 'editar-marcas/:id', component: CrearMarcasComponent, canActivate: [authGuardGuard] },
+        { path: 'ver-marcas/:id', component: MarcasComponent, canActivate: [authGuardGuard] },
         
-        { path: 'lista-producto', component: ListaProductosComponent },
-        { path: 'crear-producto', component: CrearProductosComponent }, //
-        { path: 'editar-producto/:id', component: CrearProductosComponent },
-        { path: 'ver-producto/:id', component: ProductosComponent },
+        { path: 'lista-producto', component: ListaProductosComponent, canActivate: [authGuardGuard] },
+        { path: 'crear-producto', component: CrearProductosComponent, canActivate: [authGuardGuard] }, //
+        { path: 'editar-producto/:id', component: CrearProductosComponent, canActivate: [authGuardGuard] },
+        { path: 'ver-producto/:id', component: ProductosComponent, canActivate: [authGuardGuard] },
 
-        { path: 'lista-categoria', component: ListaCategoriaComponent },
-        { path: 'crear-categoria', component: CrearCategoriasComponent }, //
-        { path: 'editar-categoria/:id', component:CrearCategoriasComponent },
-        { path: 'ver-categoria/:id', component: CategoriasComponent },
+        { path: 'lista-categoria', component: ListaCategoriaComponent, canActivate: [authGuardGuard] },
+        { path: 'crear-categoria', component: CrearCategoriasComponent, canActivate: [authGuardGuard] }, //
+        { path: 'editar-categoria/:id', component:CrearCategoriasComponent, canActivate: [authGuardGuard] },
+        { path: 'ver-categoria/:id', component: CategoriasComponent, canActivate: [authGuardGuard] },
 
-        { path: 'lista-clientes', component: ListaClientesComponent },
-        { path: 'crear-clientes', component: CrearClientesComponent },
-        { path: 'editar-clientes/:id', component: CrearClientesComponent },
-        { path: 'ver-clientes/:id', component: ClientesComponent },
+        { path: 'lista-clientes', component: ListaClientesComponent, canActivate: [authGuardGuard] },
+        { path: 'crear-clientes', component: CrearClientesComponent, canActivate: [authGuardGuard] },
+        { path: 'editar-clientes/:id', component: CrearClientesComponent, canActivate: [authGuardGuard] },
+        { path: 'ver-clientes/:id', component: ClientesComponent, canActivate: [authGuardGuard]},
         
-        { path: 'crear-compra', component: CrearComprasComponent},
-        { path: 'listar-compras', component: ListaComprasComponent},
-        { path: 'editar-compras/id', component: CrearComprasComponent},
-        { path: 'crear-compra-producto', component: CrearCompraProductoComponent},
-        { path: 'listar-compra-producto', component: ListaCompraProductoComponent},
-        { path: 'editar-compra-producto', component: CrearCompraProductoComponent},
+        { path: 'crear-compra', component: CrearComprasComponent, canActivate: [authGuardGuard]},
+        { path: 'listar-compras', component: ListaComprasComponent, canActivate: [authGuardGuard]},
+        { path: 'editar-compras/id', component: CrearComprasComponent, canActivate: [authGuardGuard]},
+        { path: 'crear-compra-producto', component: CrearCompraProductoComponent, canActivate: [authGuardGuard]},
+        { path: 'listar-compra-producto', component: ListaCompraProductoComponent, canActivate: [authGuardGuard]},
+        { path: 'editar-compra-producto', component: CrearCompraProductoComponent, canActivate: [authGuardGuard]},
         
 
+        { path: 'cambio-password', component: CambioPasswordComponent, canActivate: [authGuardGuard] },
         { path: 'login', component: LoginComponent }
     ];
 
