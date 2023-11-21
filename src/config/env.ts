@@ -57,14 +57,17 @@ export namespace env {
         { path: 'crear-producto', component: CrearProductosComponent }, //
         { path: 'editar-producto/:id', component: CrearProductosComponent },
         { path: 'ver-producto/:id', component: ProductosComponent },
+
         { path: 'lista-categoria', component: ListaCategoriaComponent },
         { path: 'crear-categoria', component: CrearCategoriasComponent }, //
         { path: 'editar-categoria/:id', component:CrearCategoriasComponent },
         { path: 'ver-categoria/:id', component: CategoriasComponent },
+
         { path: 'lista-clientes', component: ListaClientesComponent },
         { path: 'crear-clientes', component: CrearClientesComponent },
         { path: 'editar-clientes/:id', component: CrearClientesComponent },
         { path: 'ver-clientes/:id', component: ClientesComponent },
+        
         { path: 'crear-compra', component: CrearComprasComponent},
         { path: 'listar-compras', component: ListaComprasComponent},
         { path: 'editar-compras/id', component: CrearComprasComponent},

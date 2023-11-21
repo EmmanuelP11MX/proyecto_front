@@ -1,6 +1,6 @@
 <div class="container">
     <div *ngIf="!cargando">
-        <h1> {{marca.id<0?'Crear nueva marca':'Editar marca'+marca.id}} </h1>
+        <h1> {{marca.id<0?'Crear nueva marca':'Editar marca '+ marca.id}} </h1>
     <div class="alert alert-primary" role="alert" *ngIf="mensaje!=null">
         {{mensaje}}
     </div>

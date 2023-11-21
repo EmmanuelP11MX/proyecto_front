@@ -20,7 +20,7 @@ export class ListaMarcasComponent {
     marcaService.getList().subscribe({
       next: (resp) => {
         console.log(resp);
-        this.listaMarcas = Marca.mapParseListJson(resp.message);
+        this.listaMarcas = Marca.mapParseListJson(resp.data);
       },
       error: (err) => {
         console.log(err.error.msg);
@@ -28,7 +28,7 @@ export class ListaMarcasComponent {
     });
   }
   editMarca(pID: number) {
-    this.router.navigateByUrl('editar-marca/' + pID);
+    this.router.navigateByUrl('editar-marcas/' + pID);
   }
   mostrarMarca(pID: number) {
     this.router.navigateByUrl('ver-marcas/' + pID);
@@ -40,11 +40,11 @@ export class ListaMarcasComponent {
         next: (resp) => {
           this.bloqueoBtnEliminar = false;
           console.log(resp);
-          this.mensaje = 'Registro Eliminado';
+          this.mensaje = 'Marca Eliminada';
           this.marcaService.getList().subscribe({
             next: (resp) => {
               console.log(resp);
-              this.listaMarcas = Marca.mapParseListJson(resp.message);
+              this.listaMarcas = Marca.mapParseListJson(resp.data);
             },
             error: (err) => {
               console.log(err.error.msg);

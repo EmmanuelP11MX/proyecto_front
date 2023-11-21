@@ -16,7 +16,6 @@ export class CrearMarcasComponent {
     private marcaService: MarcaService, 
     private activaRouter: ActivatedRoute
     ) {
-    this.marca = new Marca(-1, '', '');
     if (activaRouter.snapshot.paramMap.get('id') != null) {
       this.cargando = true;
       marcaService
@@ -32,18 +31,35 @@ export class CrearMarcasComponent {
           },
         });
     } else {
-      this.marca = new Marca(-1, '', '');
+      this.marca = new Marca(-1, '', '', 0);
     }
   }
   submit() {
-    this.marcaService.create(this.marca).subscribe({
-      next: (resp) => {
-        console.log(resp);
-      },
-      error: (err) => {
-        console.log(err.error.msg);
-      },
-    });
-    this.mensaje = 'Marca Creada';
+    this.marca.estado_solicitud_id = 1;
+    if (this.marca.id < 0) {
+      this.marcaService.create(this.marca).subscribe({
+        next: (resp) => {
+          console.log(resp);
+          this.mensaje = 'Marca Creada';
+        },
+        error: (err) => {
+          console.log(err.error.msg);
+          this.mensaje = err.error.msg;
+        },
+      });
+    } else {
+      this.marcaService
+        .update(this.marca.id, this.marca)
+        .subscribe({
+          next: (resp) => {
+            console.log(resp);
+            this.mensaje = 'Marca Actualizada';
+          },
+          error: (err) => {
+            console.log(err.error.msg);
+            this.mensaje = err.error.msg;
+          },
+        });
+    }
   }
 }
