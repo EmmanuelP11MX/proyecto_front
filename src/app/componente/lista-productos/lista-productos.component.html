@@ -1,3 +1,6 @@
+<div class="alert alert-primary" role="alert" *ngIf="mensaje!=null">
+    {{mensaje}}
+</div>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -18,13 +21,14 @@
         <tr *ngFor="let producto of listaProductos; let i =index">
             <td>{{producto.id}}</td>
             <td>{{producto.nombre}}</td>
+            <td>{{producto.descripcion}}</td>
             <td>{{producto.precio}}</td>
             <td>{{producto.cantidad_disponible}}</td>
             <td>{{producto.categoria_id}}</td>
             <td>{{producto.marca_id}}</td>
             <td>
-                <button class="btn btn-info m-2">Editar</button>
-                <button class="btn btn-info m-2">Ver</button>
+                <button class="btn btn-info m-2" (click)="editProducto(producto.id)">Editar</button>
+                <button class="btn btn-info m-2" (click)="mostrarProducto(producto.id)" >Ver</button>
                 <button (click)="deleteProducto(producto.id)" class="btn btn-danger m-2">Eliminar</button>
             </td>
         </tr>

@@ -27,11 +27,11 @@ export class ListaProductosComponent {
       },
     });
   }
-  editSolicitud(pID: number) {
-    this.router.navigateByUrl('editar-solicitud/' + pID);
+  editProducto(pID: number) {
+    this.router.navigateByUrl('editar-producto/' + pID);
   }
-  mostrarSolicitud(pID: number) {
-    this.router.navigateByUrl('ver-solicitudes/' + pID);
+  mostrarProducto(pID: number) {
+    this.router.navigateByUrl('ver-producto/' + pID);
   }
   deleteProducto(pID: number) {
     if (!this.bloqueoBtnEliminar) {
@@ -40,7 +40,7 @@ export class ListaProductosComponent {
         next: (resp) => {
           this.bloqueoBtnEliminar = false;
           console.log(resp);
-          this.mensaje = 'Registro Eliminado';
+          this.mensaje = 'Producto Eliminado';
           this.productoService.getList().subscribe({
             next: (resp) => {
               console.log(resp);
