@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/model/Clientes';
 import { ClientesService } from '../../services/clientes.service';
@@ -8,7 +8,7 @@ import { ClientesService } from '../../services/clientes.service';
   templateUrl: './lista-clientes.component.html',
   styleUrls: ['./lista-clientes.component.css']
 })
-export class ListaClientesComponent {
+export class ListaClientesComponent implements OnInit {
   public listaClientes: Cliente[] = [];
   public mensaje?: string;
   public bloqueoBtnEliminar = false;
@@ -16,7 +16,9 @@ export class ListaClientesComponent {
   constructor(
     private clientesService: ClientesService,
     private router: Router
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.clientesService.getList().subscribe({
       next: (resp) => {
         console.log(resp);
@@ -25,13 +27,13 @@ export class ListaClientesComponent {
       error: (err) => {
         console.log(err.error.msg);
       },
-     });
+    });
   }
 
   editCliente(id: number) {
     this.router.navigateByUrl('editar-cliente/' + id);
   }
-   
+
   verCliente(id: number) {
     this.router.navigateByUrl('ver-cliente/' + id);
   }
@@ -39,20 +41,32 @@ export class ListaClientesComponent {
   deleteCliente(id: number) {
     if (!this.bloqueoBtnEliminar) {
       this.bloqueoBtnEliminar = true;
-      this.clientesService.delete(id).subscribe({
-        next: (resp) => {
-          this.bloqueoBtnEliminar = false;
-          console.log(resp);
-          this.mensaje = 'Registro Eliminado';
-          // Elimina el cliente de la lista
-          const deletedClienteIndex = this.listaClientes.findIndex(cliente => cliente.id === id);
-          if (deletedClienteIndex >= 0) {
-            this.listaClientes.splice(deletedClienteIndex, 1);
-          }
-        },
-        error: (err) => {
-          console.log(err.error.msg);
-        },
-      });
+      if (confirm('¿Está seguro de que desea eliminar este cliente?')) {
+        const deletedClienteIndex = this.listaClientes.findIndex(cliente => cliente.id === id);
+
+        this.clientesService.delete(id).subscribe({
+          next: (resp) => {
+            this.bloqueoBtnEliminar = false;
+            console.log(resp);
+
+            this.mensaje = 'Registro Eliminado';
+
+            if (deletedClienteIndex >= 0) {
+              this.listaClientes.splice(deletedClienteIndex, 1);
+            }
+
+            // Ocultar el mensaje después de 5 segundos (5000 milisegundos)
+            setTimeout(() => {
+              this.mensaje = undefined;
+            }, 3500);
+          },
+          error: (err) => {
+            console.log(err.error.msg);
+          },
+        });
+      } else {
+        this.bloqueoBtnEliminar = false;
+      }
     }
-  }}
+  }
+}
