@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -28,7 +28,6 @@ export class LoginComponent {
   }
   onSubmit() {
     this.errorMessage = ''; // Limpiar el mensaje de error al intentar iniciar sesión nuevamente
-
     if (this.loginForm.valid) {
       const email = this.loginForm.get('email').value;
       const password = this.loginForm.get('password').value;

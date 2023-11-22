@@ -4,7 +4,7 @@ import { HomeComponent } from "src/app/componente/home/home.component";
 import { CrearMarcasComponent } from "src/app/componente/crear-marcas/crear-marcas.component";
 import { ListaMarcasComponent } from "src/app/componente/lista-marcas/lista-marcas.component";
 import { MarcasComponent } from "src/app/componente/marcas/marcas.component";
-import { LoginComponent } from "src/app/login/login.component";
+import { LoginComponent } from "src/app/componente/login/login.component";
 import { ProductosComponent } from "src/app/componente/productos/productos.component";
 import { ListaProductosComponent } from "src/app/componente/lista-productos/lista-productos.component";
 import { CrearProductosComponent } from "src/app/componente/crear-productos/crear-productos.component";

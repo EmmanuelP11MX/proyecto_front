@@ -8,7 +8,7 @@ import { CrearMarcasComponent } from './componente/crear-marcas/crear-marcas.com
 import { HomeComponent } from './componente/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './componente/login/login.component';
 import { ProductosComponent } from './componente/productos/productos.component'
 import { ListaProductosComponent } from './componente/lista-productos/lista-productos.component';
 import { CrearProductosComponent } from './componente/crear-productos/crear-productos.component';

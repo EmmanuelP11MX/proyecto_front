@@ -9,6 +9,8 @@ import { AuthService } from '../../services/auth.service';
 })
 export class CambioPasswordComponent implements OnInit{
   cambioPasswordForm!: FormGroup;
+  errorMessage: string = '';
+  successMessage: string = '';
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
 
@@ -21,6 +23,8 @@ export class CambioPasswordComponent implements OnInit{
   }
 
   onCambioPassword() {
+    this.errorMessage = '';
+    this.successMessage = '';
     if (this.cambioPasswordForm && this.cambioPasswordForm.valid) {
       const currentPasswordControl = this.cambioPasswordForm.get('currentPassword');
       const newPasswordControl = this.cambioPasswordForm.get('newPassword');
@@ -36,20 +40,20 @@ export class CambioPasswordComponent implements OnInit{
           this.authService.cambioPassword(currentPassword, newPassword).subscribe(
             (resp) => {
               console.log('Contraseña cambiada exitosamente');
-              // Puedes agregar lógica adicional, como redirigir a otra página o mostrar un mensaje de éxito.
+              this.successMessage = 'Cambio de contraseña Exitoso';
             },
             (err) => {
               console.error('Error al cambiar la contraseña:', err);
-              // Puedes mostrar un mensaje de error al usuario.
+              this.errorMessage = 'Error al cambiar la contraseña';
             }
           );
         } else {
           console.error('Las contraseñas no coinciden');
-          // Puedes mostrar un mensaje de error al usuario indicando que las contraseñas no coinciden.
+          this.errorMessage = 'Error las contraseñas no coinciden';
         }
       } else {
         console.error('Alguno de los controles de formulario es nulo');
-        // Puedes manejar este caso según tus necesidades.
+        this.errorMessage = 'Error alguno de los controles de formulario es nulo';
       }
     }
   }
