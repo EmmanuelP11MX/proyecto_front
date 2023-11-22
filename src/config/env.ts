@@ -32,7 +32,7 @@ export class ItemMenu {
 }
 export namespace env {
     export const menu: Array<ItemMenu> = [
-        new ItemMenu(1, 'Inicio', '/'),
+        new ItemMenu(1, 'Home', '/'),
         new ItemMenu(2, 'Lista Marcas', 'lista-marcas'),
         new ItemMenu(3, 'Crear Marcas', 'crear-marcas'),
         new ItemMenu(4, 'Lista Producto', 'lista-producto'),

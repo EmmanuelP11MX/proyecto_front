@@ -1,6 +1,6 @@
 <div class="container">
     <div *ngIf="!cargando">
-        <h1> {{categoria.id<0?'Crear nueva categorias':'Editar categorias'+categoria.id}}</h1>
+        <h1> {{categoria.id<0?'Crear nueva categoria':'Editar categoria'+categoria.id}}</h1>
     
     <div class="alert alert-primary" role="alert" *ngIf="mensaje!=null">
         {{mensaje}}
@@ -19,7 +19,6 @@
                 </div>
                 <div *ngIf="nombre.errors?.['required']">
                     Introduzaca un nombre
-
                 </div>
             </div>
         </div>

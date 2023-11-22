@@ -52,9 +52,15 @@ export class AuthService {
       current_password: currentPassword,
       new_password: newPassword,
     };
+    this.options={
+      headers:new Headers({
+        
+        Authorization:'Bearer '+localStorage.getItem(this.authSecretKey)
+      })
+    };
     return this.http.post(
       this.hosting + this.cambioPasswordEndpoint,
-      requestBody
+      requestBody,this.options
     );
   }
 }
