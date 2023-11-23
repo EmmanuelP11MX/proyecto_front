@@ -33,19 +33,18 @@ export class ItemMenu {
 export namespace env {
     export const menu: Array<ItemMenu> = [
         new ItemMenu(1, 'Home', '/'),
-        new ItemMenu(2, 'Lista Marcas', 'lista-marcas'),
-        new ItemMenu(3, 'Crear Marcas', 'crear-marcas'),
-        new ItemMenu(4, 'Lista Producto', 'lista-producto'),
-        new ItemMenu(5, 'Crear Producto', 'crear-producto'),
-        new ItemMenu(6, 'Lista Categoria', 'lista-categoria'),
-        new ItemMenu(7, 'Crear Categoria', 'crear-categoria'),
-        new ItemMenu(8, 'Lista Clientes', 'lista-clientes'),
-        new ItemMenu(9, 'Crear Clientes', 'crear-clientes'),
-        new ItemMenu(10, 'Crear Compra','crear-compra'),
-        new ItemMenu(11, 'Listar Compras', 'listar-compras'),
-        new ItemMenu(12, 'Crear Compra-Producto', 'crear-compra-producto'),
-        new ItemMenu(13, 'Listar Compra-Producto', 'listar-compra-producto'),
-        new ItemMenu(14, 'Cambiar Password', 'cambio-password'),
+        new ItemMenu(2, 'Marcas', 'lista-marcas'),
+        new ItemMenu(3, 'Lista Producto', 'lista-producto'),
+        new ItemMenu(4, 'Crear Producto', 'crear-producto'),
+        new ItemMenu(5, 'Lista Categoria', 'lista-categoria'),
+        new ItemMenu(6, 'Crear Categoria', 'crear-categoria'),
+        new ItemMenu(7, 'Lista Clientes', 'lista-clientes'),
+        new ItemMenu(8, 'Crear Clientes', 'crear-clientes'),
+        new ItemMenu(9, 'Crear Compra','crear-compra'),
+        new ItemMenu(10, 'Listar Compras', 'listar-compras'),
+        new ItemMenu(11, 'Crear Compra-Producto', 'crear-compra-producto'),
+        new ItemMenu(12, 'Listar Compra-Producto', 'listar-compra-producto'),
+        new ItemMenu(13, 'Cambiar Password', 'cambio-password'),
         
     ];
 

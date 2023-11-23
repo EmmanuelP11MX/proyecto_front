@@ -19,10 +19,13 @@
             <td>{{marca.nombre}}</td>
             <td>{{marca.descripcion}}</td>
             <td>
-                <button class="btn btn-info m-2" (click)="editMarca(marca.id)">Editar</button>
-                <button class="btn btn-info m-2" (click)="mostrarMarca(marca.id)">Ver</button>
+                <button class="btn btn-primary m-2" (click)="editMarca(marca.id)">Editar</button>
+                <button class="btn btn-secondary m-2" (click)="mostrarMarca(marca.id)">Ver</button>
                 <button (click)="deleteMarca(marca.id)" class="btn btn-danger m-2">Eliminar</button>
             </td>
+        </tr>
+        <tr>
+            <button class="btn btn-success m-2" (click)="crearMarca()">Agregar</button>
         </tr>
     </tbody>
 </table>

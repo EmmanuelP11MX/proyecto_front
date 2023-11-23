@@ -43,8 +43,8 @@ export class CambioPasswordComponent implements OnInit{
               this.successMessage = 'Cambio de contraseña Exitoso';
             },
             (err) => {
-              console.error('Error al cambiar la contraseña:', err);
-              this.errorMessage = 'Error al cambiar la contraseña';
+              console.error('Error, tu nueva contraseña es muy corta', err);
+              this.errorMessage = 'Error, tu nueva contraseña es muy corta';
             }
           );
         } else {

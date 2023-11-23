@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Marca } from 'src/model/Marca';
 import { MarcaService } from '../../services/marca.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-marcas',
@@ -32,6 +32,9 @@ export class ListaMarcasComponent {
   }
   mostrarMarca(pID: number) {
     this.router.navigateByUrl('ver-marcas/' + pID);
+  }
+  crearMarca(){
+    this.router.navigateByUrl('crear-marcas');
   }
   deleteMarca(pID: number) {
     if (!this.bloqueoBtnEliminar) {
