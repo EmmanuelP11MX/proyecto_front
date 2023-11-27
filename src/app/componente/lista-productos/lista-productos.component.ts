@@ -27,6 +27,9 @@ export class ListaProductosComponent {
       },
     });
   }
+  crearProducto(){
+    this.router.navigateByUrl('crear-producto');
+  }
   editProducto(pID: number) {
     this.router.navigateByUrl('editar-producto/' + pID);
   }

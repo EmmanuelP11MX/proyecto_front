@@ -27,10 +27,13 @@
             <td>{{producto.categoria_id}}</td>
             <td>{{producto.marca_id}}</td>
             <td>
-                <button class="btn btn-info m-2" (click)="editProducto(producto.id)">Editar</button>
-                <button class="btn btn-info m-2" (click)="mostrarProducto(producto.id)" >Ver</button>
+                <button class="btn btn-warning m-2" (click)="editProducto(producto.id)">Editar</button>
+                <button class="btn btn-primary m-2" (click)="mostrarProducto(producto.id)" >Ver</button>
                 <button (click)="deleteProducto(producto.id)" class="btn btn-danger m-2">Eliminar</button>
             </td>
+        </tr>
+        <tr>
+            <button class="btn btn-success m-2" (click)="crearProducto()">Agregar</button>
         </tr>
 
     </tbody>

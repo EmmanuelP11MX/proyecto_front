@@ -36,6 +36,7 @@ import { CambioPasswordComponent } from './componente/cambio-password/cambio-pas
     ListaCategoriaComponent,
     CrearCategoriasComponent,
     CategoriasComponent,
+    CategoriasComponent,
     ClientesComponent,
     CrearClientesComponent,
     ListaClientesComponent,

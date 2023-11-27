@@ -27,11 +27,14 @@ export class ListaCategoriaComponent {
       },
     });
   }
-  editSolicitud(pID: number) {
+  ediCategoria(pID: number) {
     this.router.navigateByUrl('editar-categoria/' + pID);
   }
-  mostrarSolicitud(pID: number) {
+  mostrarCategoria(pID: number) {
     this.router.navigateByUrl('ver-categoria/' + pID);
+  }
+  crearCategoria(){
+    this.router.navigateByUrl('crear-categoria');
   }
   deleteCategoria(pID: number) {
     if (!this.bloqueoBtnEliminar) {

@@ -13,16 +13,18 @@
         <tr *ngIf="listaCategorias.length==0">
             <td colspan="4">No hay elementos</td>
         </tr>
-        <tr *ngFor="let solicitud of listaCategorias; let i =index">
-            <td>{{solicitud.id}}</td>
-            <td>{{solicitud.nombre}}</td>
-            <td>{{solicitud.descripcion}}</td>
+        <tr *ngFor="let categoria of listaCategorias; let i =index">
+            <td>{{categoria.id}}</td>
+            <td>{{categoria.nombre}}</td>
+            <td>{{categoria.descripcion}}</td>
             <td>
-                <button class="btn btn-info m-2" (click)="editSolicitud(solicitud.id)">Editar</button>
-                <button class="btn btn-info m-2" (click)="mostrarSolicitud(solicitud.id)">Ver</button>
-                <button (click)="deleteCategoria(solicitud.id)" class="btn btn-danger m-2">Eliminar</button>
+                <button class="btn btn-info m-2" (click)="ediCategoria(categoria.id)">Editar</button>
+                <button class="btn btn-info m-2" (click)="mostrarCategoria(categoria.id)">Ver</button>
+                <button (click)="deleteCategoria(categoria.id)" class="btn btn-danger m-2">Eliminar</button>
             </td>
         </tr>
-
+        <tr>
+            <button class="btn btn-success m-2" (click)="crearCategoria()">Agregar</button>
+        </tr> 
     </tbody>
 </table>
