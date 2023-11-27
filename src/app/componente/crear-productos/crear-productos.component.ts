@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CategoriasService } from 'src/app/services/categorias.service';
 import { MarcaService } from 'src/app/services/marca.service';
 import { ProductoService } from 'src/app/services/producto.service';
+import { Categorias } from 'src/model/Categorias';
 import { Marca } from 'src/model/Marca';
 import { Producto } from 'src/model/Producto';
 
@@ -12,14 +14,15 @@ import { Producto } from 'src/model/Producto';
 })
 export class CrearProductosComponent {
   public listaMarcas: Marca[] = [];
+  public listaCategoria: Categorias[] = [];
   producto!: Producto;
   mensaje!: string;
   cargando: any;
   constructor(
     private marcaService: MarcaService,
     private productosService: ProductoService,
+    private categoriaService: CategoriasService,
     private activaRouter: ActivatedRoute) {
-    /*this.producto = new Producto(-1, '','',0,0, 0,0);*/
     marcaService.getList().subscribe({
       next: (resp) => {
         console.log(resp);
@@ -29,6 +32,17 @@ export class CrearProductosComponent {
         console.log(err.error.msg);
       },
     });
+
+    categoriaService.getList().subscribe({
+      next: (resp) => {
+        console.log(resp);
+        this.listaCategoria = Categorias.mapParseListJson(resp.data);
+      },
+      error: (err) => {
+        console.log(err.error.msg);
+      },
+    });
+
     if(activaRouter.snapshot.paramMap.get('id') != null){
       this.cargando = true;
         productosService

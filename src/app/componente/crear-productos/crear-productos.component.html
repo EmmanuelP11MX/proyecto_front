@@ -33,7 +33,7 @@
             {{descripcion.errors|json}}
         </div>
         <div *ngIf="descripcion.errors?.['required']">
-            Nombre de producto
+            Descripcion de producto
 
         </div>
     </div>
@@ -45,7 +45,7 @@
         [ngClass]="{'is-valid':!precio.invalid,'is-invalid':precio.invalid}" required>
     <div class="invalid-feedback" *ngIf="precio.invalid && (precio.dirty || precio.touched)">
         <div *ngIf="precio.errors?.['minlength']">
-            EL numero minimo es de 3
+            EL numero minimo es de 2
             {{precio.errors|json}}
         </div>
         <div *ngIf="precio.errors?.['required']">
@@ -74,9 +74,13 @@
 
 <div class="col-md-6">
     <label for="nombre" class="form-label">CategoriaID</label>
-    <input type="text" class="form-control" id="categoria_id" aria-describedby="Categoria ID"
+    <select id="categoria_id" class="form-select" aria-describedby="Categoria ID" 
         [(ngModel)]="producto.categoria_id" #categoria_id="ngModel" name="categoria_id" minlength="1" maxlength="150"
         [ngClass]="{'is-valid':!categoria_id.invalid,'is-invalid':categoria_id.invalid}" required>
+        <option selected>Selecciona una Categoria</option>
+        <option *ngFor="let categoria of listaCategoria; let i =index" value="{{categoria.id}}">{{categoria.nombre}} </option>
+    </select>
+    
     <div class="invalid-feedback" *ngIf="categoria_id.invalid && (categoria_id.dirty || categoria_id.touched)">
         <div *ngIf="categoria_id.errors?.['minlength']">
             EL numero minimo es de 3
@@ -90,9 +94,9 @@
 
 <div class="col-md-6">
     <label for="nombre" class="form-label">MarcaID</label>
-    <select id="marca_id" class="form-select" aria-describedby="Marca ID" [(ngModel)]="producto.marca_id" #marca_id="ngModel"
-        name="marca_id" minlength="1" maxlength="150"
-        [ngClass]="{'is-valid':!marca_id.invalid,'is-invalid':marca_id.invalid}" required>
+    <select id="marca_id" class="form-select" aria-describedby="Marca ID" 
+    [(ngModel)]="producto.marca_id" #marca_id="ngModel" name="marca_id" minlength="1" maxlength="150"
+    [ngClass]="{'is-valid':!marca_id.invalid,'is-invalid':marca_id.invalid}" required>
         <option value="null" >Seleccionar un elemento</option>
         <option *ngFor="let marca of listaMarcas; let i =index" value="{{marca.id}}">{{marca.nombre}}</option>
     </select>

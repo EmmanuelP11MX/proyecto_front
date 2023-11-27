@@ -34,8 +34,7 @@ export namespace env {
     export const menu: Array<ItemMenu> = [
         new ItemMenu(1, 'Home', '/'),
         new ItemMenu(2, 'Marcas', 'lista-marcas'),
-        new ItemMenu(3, 'Lista Producto', 'lista-producto'),
-        new ItemMenu(4, 'Crear Producto', 'crear-producto'),
+        new ItemMenu(3, 'Productos', 'lista-producto'),
         new ItemMenu(5, 'Lista Categoria', 'lista-categoria'),
         new ItemMenu(6, 'Crear Categoria', 'crear-categoria'),
         new ItemMenu(7, 'Lista Clientes', 'lista-clientes'),
@@ -56,12 +55,12 @@ export namespace env {
         { path: 'ver-marcas/:id', component: MarcasComponent, canActivate: [authGuardGuard] },
         
         { path: 'lista-producto', component: ListaProductosComponent, canActivate: [authGuardGuard] },
-        { path: 'crear-producto', component: CrearProductosComponent, canActivate: [authGuardGuard] }, //
+        { path: 'crear-producto', component: CrearProductosComponent, canActivate: [authGuardGuard] }, 
         { path: 'editar-producto/:id', component: CrearProductosComponent, canActivate: [authGuardGuard] },
         { path: 'ver-producto/:id', component: ProductosComponent, canActivate: [authGuardGuard] },
 
         { path: 'lista-categoria', component: ListaCategoriaComponent, canActivate: [authGuardGuard] },
-        { path: 'crear-categoria', component: CrearCategoriasComponent, canActivate: [authGuardGuard] }, //
+        { path: 'crear-categoria', component: CrearCategoriasComponent, canActivate: [authGuardGuard] }, 
         { path: 'editar-categoria/:id', component:CrearCategoriasComponent, canActivate: [authGuardGuard] },
         { path: 'ver-categoria/:id', component: CategoriasComponent, canActivate: [authGuardGuard] },
 
