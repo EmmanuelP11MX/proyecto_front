@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Cliente } from 'src/model/Clientes';
-import { ClientesService } from '../../services/clientes.service';
+import { ClienteService } from '../../services/clientes.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-clientes',
@@ -14,15 +14,15 @@ export class ListaClientesComponent implements OnInit {
   public bloqueoBtnEliminar = false;
 
   constructor(
-    private clientesService: ClientesService,
+    private clienteService: ClienteService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.clientesService.getList().subscribe({
+    this.clienteService.getList().subscribe({
       next: (resp) => {
         console.log(resp);
-        this.listaClientes = Cliente.mapParseListJson(resp);
+        this.listaClientes = Cliente.mapParseListJson(resp.data);
       },
       error: (err) => {
         console.log(err.error.msg);
@@ -30,43 +30,40 @@ export class ListaClientesComponent implements OnInit {
     });
   }
 
-  editCliente(id: number) {
-    this.router.navigateByUrl('editar-cliente/' + id);
+  editCliente(pID: number) { 
+    this.router.navigateByUrl('editar-clientes/' + pID);
   }
 
-  verCliente(id: number) {
-    this.router.navigateByUrl('ver-cliente/' + id);
+  mostrarCliente(pID: number) {
+    this.router.navigateByUrl('ver-clientes/' + pID);
   }
 
-  deleteCliente(id: number) {
+  crearCliente() {
+    this.router.navigateByUrl('crear-clientes');
+  }
+
+  deleteCliente(pID: number) {
     if (!this.bloqueoBtnEliminar) {
       this.bloqueoBtnEliminar = true;
-      if (confirm('¿Está seguro de que desea eliminar este cliente?')) {
-        const deletedClienteIndex = this.listaClientes.findIndex(cliente => cliente.id === id);
-
-        this.clientesService.delete(id).subscribe({
-          next: (resp) => {
-            this.bloqueoBtnEliminar = false;
-            console.log(resp);
-
-            this.mensaje = 'Registro Eliminado';
-
-            if (deletedClienteIndex >= 0) {
-              this.listaClientes.splice(deletedClienteIndex, 1);
-            }
-
-            // Ocultar el mensaje después de 5 segundos (5000 milisegundos)
-            setTimeout(() => {
-              this.mensaje = undefined;
-            }, 3500);
-          },
-          error: (err) => {
-            console.log(err.error.msg);
-          },
-        });
-      } else {
-        this.bloqueoBtnEliminar = false;
-      }
+      this.clienteService.delete(pID).subscribe({
+        next: (resp) => {
+          this.bloqueoBtnEliminar = false;
+          console.log(resp);
+          this.mensaje = 'Cliente Eliminado';
+          this.clienteService.getList().subscribe({
+            next: (resp) => {
+              console.log(resp);
+              this.listaClientes = Cliente.mapParseListJson(resp.data);
+            },
+            error: (err) => {
+              console.log(err.error.msg);
+            },
+          });
+        },
+        error: (err) => {
+          console.log(err.error.msg);
+        },
+      });
     }
   }
 }

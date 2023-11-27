@@ -1,1 +1,10 @@
-<p>clientes works!</p>
+<div *ngIf="cliente" class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Número de cliente: {{cliente.id}}</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Nombre: {{cliente.nombre}}</h6>
+      <p class="card-text">Apellidos: {{cliente.apellidos}}</p>
+      <a [routerLink]="['/editar-clientes', cliente.id]" class="btn btn-info m-2">Editar</a>
+      <a (click)="eliminarCliente(cliente.id)" class="btn btn-danger m-2">Eliminar</a>
+    </div>
+  </div>
+  
