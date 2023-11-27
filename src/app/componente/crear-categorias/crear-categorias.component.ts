@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { CategoriasService } from 'src/app/services/categorias.service';
+import { ActivatedRoute } from '@angular/router';
 import { Categorias } from 'src/model/Categorias';
+import { CategoriasService } from 'src/app/services/categorias.service';
 
 @Component({
   selector: 'app-crear-categorias',
@@ -8,22 +9,57 @@ import { Categorias } from 'src/model/Categorias';
   styleUrls: ['./crear-categorias.component.css']
 })
 export class CrearCategoriasComponent {
-  categoria!: Categorias;
+  categorias!: Categorias;
   mensaje!: string;
-  cargando: any;
-  constructor(private categoriaService: CategoriasService) {
-    this.categoria = new Categorias (-1, '', '');
+  cargando: boolean = false;
+  constructor(
+    private categoriaService: CategoriasService, 
+    private activaRouter: ActivatedRoute
+    ) {
+    if (activaRouter.snapshot.paramMap.get('id') != null) {
+      this.cargando = true;
+      categoriaService
+        .get(Number(activaRouter.snapshot.paramMap.get('id')))
+        .subscribe({
+          next: (resp) => {
+            this.categorias = resp.data as Categorias;
+            this.cargando = false;
+          },
+          error: (err) => {
+            console.log(err.error.msg);
+            this.cargando = false;
+          },
+        });
+    } else {
+      this.categorias = new Categorias(-1, '', '');
+    }
   }
   submit() {
-    //this.categoria.estado_solicitud_id = 1;
-    this.categoriaService.create(this.categoria).subscribe({
-      next: (resp) => {
-        console.log(resp);
-      },
-      error: (err) => {
-        console.log(err.error.msg);
-      },
-    });
-    this.mensaje = 'Categoria Creada';
+    this.categorias.estado_solicitud_id = 1;
+    if (this.categorias.id < 0) {
+      this.categoriaService.create(this.categorias).subscribe({
+        next: (resp) => {
+          console.log(resp);
+          this.mensaje = 'Categorias Creada';
+        },
+        error: (err) => {
+          console.log(err.error.msg);
+          this.mensaje = err.error.msg;
+        },
+      });
+    } else {
+      this.categoriaService
+        .update(this.categorias.id, this.categorias)
+        .subscribe({
+          next: (resp) => {
+            console.log(resp);
+            this.mensaje = 'Categorias Actualizada';
+          },
+          error: (err) => {
+            console.log(err.error.msg);
+            this.mensaje = err.error.msg;
+          },
+        });
+    }
   }
 }

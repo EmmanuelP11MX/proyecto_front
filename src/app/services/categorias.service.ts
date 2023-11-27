@@ -6,6 +6,7 @@ import { Categorias } from 'src/model/Categorias';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CategoriasService {
   private hosting: string = 'http://127.0.0.1:8000/';
   private action: string = 'api/categorias';
@@ -36,3 +37,4 @@ export class CategoriasService {
     return this.http.get(this.hosting + this.action + '/' + id);
   }
 }
+

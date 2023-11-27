@@ -1,6 +1,6 @@
 <div class="container">
     <div *ngIf="!cargando">
-        <h1> {{categoria.id<0?'Crear nueva categoria':'Editar categoria'+categoria.id}}</h1>
+        <h1> {{categorias.id<0?'Crear nueva categoria':'Editar categoria'+categorias.nombre}}</h1>
     
     <div class="alert alert-primary" role="alert" *ngIf="mensaje!=null">
         {{mensaje}}
@@ -10,7 +10,7 @@
         <div class="col-md-6">
             <label for="nombre" class="form-label">Nombre de la  categoria</label>
             <input type="text" class="form-control" id="titulo_corto" aria-describedby="Categorias"
-                [(ngModel)]="categoria.nombre" #nombre="ngModel" name="nombre" minlength="10"
+                [(ngModel)]="categorias.nombre" #nombre="ngModel" name="nombre" minlength="10"
                 maxlength="100" [ngClass]="{'is-valid':!nombre.invalid,'is-invalid':nombre.invalid}" required>
             <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
                 <div *ngIf="nombre.errors?.['minlength']">
@@ -25,7 +25,7 @@
         <div class="col-md-6">
             <label for="nombre" class="form-label">Descripción</label>
             <input type="text" class="form-control" id="descripcion" aria-describedby="Descripcion"
-                [(ngModel)]="categoria.descripcion" #descripcion="ngModel" name="descripcion" minlength="10"
+                [(ngModel)]="categorias.descripcion" #descripcion="ngModel" name="descripcion" minlength="10"
                 maxlength="300" [ngClass]="{'is-valid':!descripcion.invalid,'is-invalid':descripcion.invalid}" required>
             <div class="invalid-feedback" *ngIf="descripcion.invalid && (nombre.dirty || descripcion.touched)">
                 <div *ngIf="descripcion.errors?.['minlength']">
@@ -40,7 +40,7 @@
         <div class="row">
             <div class="col-12 mt-4">
                 <button type="submit" [disabled]="!forma.valid" class="btn btn-primary">                   
-                    {{categoria.id<0?'Agregar':'Actualizar'}}
+                    {{categorias.id<0?'Agregar':'Actualizar'}}
                 </button>
             </div>
         </div>
