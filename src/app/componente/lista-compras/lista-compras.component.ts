@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { ComprasService } from 'src/app/services/compras.service';
 import { Compra } from 'src/model/Compra';
+import { CompraService } from '../../services/compra.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-compras',
@@ -14,24 +14,27 @@ export class ListaComprasComponent {
   public bloqueoBtnEliminar = false;
   ngOnInit() { }
   constructor(
-    private compraService: ComprasService,
+    private compraService: CompraService,
     private router: Router
   ) {
     compraService.getList().subscribe({
       next: (resp) => {
         console.log(resp);
-        this.listaCompras = Compra.mapParseListJson(resp.message);
+        this.listaCompras = Compra.mapParseListJson(resp.data);
       },
       error: (err) => {
         console.log(err.error.msg);
       },
     });
   }
-  editSolicitud(pID: number) {
-    this.router.navigateByUrl('editar-compra/' + pID);
+  editCompra(pID: number) {
+    this.router.navigateByUrl('editar-compras/' + pID);
   }
-  mostrarSolicitud(pID: number) {
-    this.router.navigateByUrl('ver-compra/' + pID);
+  mostrarCompra(pID: number) {
+    this.router.navigateByUrl('ver-compras/' + pID);
+  }
+  crearCompra(){
+    this.router.navigateByUrl('crear-compras');
   }
   deleteCompra(pID: number) {
     if (!this.bloqueoBtnEliminar) {
@@ -40,11 +43,11 @@ export class ListaComprasComponent {
         next: (resp) => {
           this.bloqueoBtnEliminar = false;
           console.log(resp);
-          this.mensaje = 'Categoria Eliminado';
+          this.mensaje = 'Compra Eliminado';
           this.compraService.getList().subscribe({
             next: (resp) => {
               console.log(resp);
-              this.listaCompras = Compra.mapParseListJson(resp.message);
+              this.listaCompras = Compra.mapParseListJson(resp.data);
             },
             error: (err) => {
               console.log(err.error.msg);

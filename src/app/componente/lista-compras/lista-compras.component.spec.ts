@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ListaComprasComponent } from './lista-compras.component';
 
 describe('ListaComprasComponent', () => {

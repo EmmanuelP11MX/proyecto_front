@@ -7,26 +7,24 @@
             <td>ID</td>
             <td>Subtotal</td>
             <td>Total</td>
-            <td>Creacion</td>
-            <td>Actualizacion</td>
         </tr>
     </thead>
     <tbody>
         <tr *ngIf="listaCompras.length==0">
             <td colspan="4">No hay elementos</td>
         </tr>
-        <tr *ngFor="let solicitud of listaCompras; let i =index">
-            <td>{{solicitud.id}}</td>
-            <td>{{solicitud.subtotal}}</td>
-            <td>{{solicitud.total}}</td>
-            <td>{{solicitud.created_at}}</td>
-            <td>{{solicitud.updated_at}}</td>
+        <tr *ngFor="let compra of listaCompras; let i =index">
+            <td>{{compra.id}}</td>
+            <td>{{compra.subtotal}}</td>
+            <td>{{compra.total}}</td>
             <td>
-                <button class="btn btn-info m-2" (click)="editSolicitud(solicitud.id)">Editar</button>
-                <button class="btn btn-info m-2" (click)="mostrarSolicitud(solicitud.id)">Ver</button>
-                <button (click)="deleteCompra(solicitud.id)" class="btn btn-danger m-2">Eliminar</button>
+                <button class="btn btn-info m-2" (click)="editCompra(compra.id)">Editar</button>
+                <button class="btn btn-info m-2" (click)="mostrarCompra(compra.id)">Ver</button>
+                <button (click)="deleteCompra(compra.id)" class="btn btn-danger m-2">Eliminar</button>
             </td>
         </tr>
-
+        <tr>
+            <button class="btn btn-success m-2" (click)="crearCompra()">Agregar</button>
+        </tr>
     </tbody>
 </table>

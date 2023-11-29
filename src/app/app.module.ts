@@ -18,7 +18,6 @@ import { CategoriasComponent } from './componente/categorias/categorias.componen
 import { ClientesComponent } from './componente/clientes/clientes.component';
 import { CrearClientesComponent } from './componente/crear-clientes/crear-clientes.component';
 import { ListaClientesComponent } from './componente/lista-clientes/lista-clientes.component';
-import { CrearCompraProductoComponent } from './componente/crear-compra-producto/crear-compra-producto.component';
 import { ListaCompraProductoComponent } from './componente/lista-compra-producto/lista-compra-producto.component';
 import { CambioPasswordComponent } from './componente/cambio-password/cambio-password.component';
 
@@ -40,7 +39,6 @@ import { CambioPasswordComponent } from './componente/cambio-password/cambio-pas
     ClientesComponent,
     CrearClientesComponent,
     ListaClientesComponent,
-    CrearCompraProductoComponent,
     ListaCompraProductoComponent,
     CambioPasswordComponent
   ],

@@ -6,7 +6,7 @@ import { Compra } from 'src/model/Compra';
 @Injectable({
   providedIn: 'root'
 })
-export class ComprasService {
+export class CompraService {
   private hosting: string = 'http://127.0.0.1:8000/';
   private action: string = 'api/compras';
   private options:any;

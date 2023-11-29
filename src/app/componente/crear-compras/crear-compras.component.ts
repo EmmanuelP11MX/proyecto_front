@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Compra } from 'src/model/Compra';
-import { ComprasService } from 'src/app/services/compras.service';
+import { CompraService } from 'src/app/services/compra.service';
 
 @Component({
   selector: 'app-crear-compras',
@@ -11,7 +11,7 @@ export class CrearComprasComponent {
   compra!: Compra;
   mensaje!: string;
   cargando: any;
-  constructor(private compraService: ComprasService) {
+  constructor(private compraService: CompraService) {
     this.compra = new Compra (-1, 0, 0, new Date(), new Date());
   }
   submit() {

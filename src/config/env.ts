@@ -16,7 +16,6 @@ import { CrearClientesComponent } from "src/app/componente/crear-clientes/crear-
 import { ClientesComponent } from "src/app/componente/clientes/clientes.component";
 import { CrearComprasComponent } from "src/app/componente/crear-compras/crear-compras.component";
 import { ListaComprasComponent } from "src/app/componente/lista-compras/lista-compras.component";
-import { CrearCompraProductoComponent } from "src/app/componente/crear-compra-producto/crear-compra-producto.component";
 import { ListaCompraProductoComponent } from "src/app/componente/lista-compra-producto/lista-compra-producto.component";
 import { CambioPasswordComponent } from "src/app/componente/cambio-password/cambio-password.component";
 
@@ -35,14 +34,11 @@ export namespace env {
         new ItemMenu(1, 'Home', '/'),
         new ItemMenu(2, 'Marcas', 'lista-marcas'),
         new ItemMenu(3, 'Productos', 'lista-producto'),
-        new ItemMenu(5, 'Categoria', 'lista-categoria'),
-        new ItemMenu(7, 'Lista Clientes', 'lista-clientes'),
-        new ItemMenu(8, 'Crear Clientes', 'crear-clientes'),
-        new ItemMenu(9, 'Crear Compra','crear-compra'),
-        new ItemMenu(10, 'Listar Compras', 'listar-compras'),
-        new ItemMenu(11, 'Crear Compra-Producto', 'crear-compra-producto'),
-        new ItemMenu(12, 'Listar Compra-Producto', 'listar-compra-producto'),
-        new ItemMenu(13, 'Cambiar Password', 'cambio-password'),
+        new ItemMenu(5, 'Categorias', 'lista-categoria'),
+        new ItemMenu(6, 'Clientes', 'lista-clientes'),
+        new ItemMenu(7, 'Compras', 'lista-compras'),
+        new ItemMenu(8, 'Compra-Producto', 'listar-compra-producto'),
+        new ItemMenu(9, 'Cambiar Password', 'cambio-password'),
         
     ];
 
@@ -68,12 +64,11 @@ export namespace env {
         { path: 'editar-clientes/:id', component: CrearClientesComponent, canActivate: [authGuardGuard] },
         { path: 'ver-clientes/:id', component: ClientesComponent, canActivate: [authGuardGuard]},
         
-        { path: 'crear-compra', component: CrearComprasComponent, canActivate: [authGuardGuard]},
-        { path: 'listar-compras', component: ListaComprasComponent, canActivate: [authGuardGuard]},
+        { path: 'crear-compras', component: CrearComprasComponent, canActivate: [authGuardGuard]},
+        { path: 'lista-compras', component: ListaComprasComponent, canActivate: [authGuardGuard]},
         { path: 'editar-compras/id', component: CrearComprasComponent, canActivate: [authGuardGuard]},
-        { path: 'crear-compra-producto', component: CrearCompraProductoComponent, canActivate: [authGuardGuard]},
-        { path: 'listar-compra-producto', component: ListaCompraProductoComponent, canActivate: [authGuardGuard]},
-        { path: 'editar-compra-producto', component: CrearCompraProductoComponent, canActivate: [authGuardGuard]},
+        { path: 'ver-compras/:id', component: MarcasComponent, canActivate: [authGuardGuard] },
+        { path: 'lista-compra-producto', component: ListaCompraProductoComponent, canActivate: [authGuardGuard]},
         
 
         { path: 'cambio-password', component: CambioPasswordComponent, canActivate: [authGuardGuard] },
